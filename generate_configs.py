@@ -361,7 +361,7 @@ f10\tf1\tf2\tf3\tpause\tXX\t(tap-dance 200 (XX (layer-switch U_FUN)))\t(tap-danc
 
 def main():
     """Generate all configuration files."""
-    base_output_dir = Path('.')
+    base_output_dir = Path('layouts')
     configs_generated = []
 
     for alpha in ALPHAS.keys():
@@ -372,7 +372,7 @@ def main():
                     continue
 
                 for platform in PLATFORMS.keys():
-                    # Create folder structure: alpha/platform/
+                    # Create folder structure: layouts/alpha/platform/
                     output_dir = base_output_dir / alpha / platform
                     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -383,7 +383,7 @@ def main():
 
                     # Write file
                     filepath.write_text(content)
-                    configs_generated.append(f"{alpha}/{platform}/{filename}")
+                    configs_generated.append(f"layouts/{alpha}/{platform}/{filename}")
 
     print(f"✓ Generated {len(configs_generated)} Miryoku Kanata configurations")
     print(f"\nBreakdown:")
